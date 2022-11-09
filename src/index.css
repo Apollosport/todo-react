@@ -29,10 +29,15 @@ hr {
   width: 70%;
 }
 
-li.checked {
+.done {
   text-decoration: line-through;
+  color: #c2c2c2;
 }
 
 li {
-  text-decoration: noone;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
 }

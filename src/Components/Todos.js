@@ -1,13 +1,8 @@
 import React from "react";
-import { useState } from "react";
-export default function Todos() {
-  const [inputArea, setTodo] = useState("");
-  const [input2, setTodo2] = useState(inputArea);
-  const [list, setList] = useState([]);
+import Todo from "./Todo";
+//const arrayTodos = [{ todo: "wash up", checkDone: false }];
 
-  //const arrayTodos = [{ todo: "wash up", checkDone: false }];
-
-  /* const createObject = (todo) => {
+/* const createObject = (todo) => {
     const someObject = {
       todo: todo,
       checkDone: false,
@@ -17,7 +12,7 @@ export default function Todos() {
     console.log(arrayTodos);
   }; */
 
-  /*   const getInputValue = (e) => {
+/*   const getInputValue = (e) => {
     const userValue = e.target.value;    
     if (userValue === "") {
       alert("Do you want to do nothing?");
@@ -27,15 +22,20 @@ export default function Todos() {
     createObject(userValue);
   }; */
 
-  /* const keyPressHandler = (e) => {
+/* const keyPressHandler = (e) => {
     if (e.key === "Enter") {
       //console.log(e);
       getInputValue(e);
     }
   }; */
 
-  const clickPressHandler = () => {
-    setTodo2(inputArea);
+export default function Todos({ list, setList }) {
+  const handleCheckbox = (event) => {
+    if (event.target.style.Textdecoration) {
+      //div.target.style.removeProperty("text-decoration");
+    } else {
+      //div.target.style.setProperty("text-decoration", "line-through");
+    }
   };
 
   function editArea() {
@@ -55,55 +55,26 @@ export default function Todos() {
     );
   }
 
-  const handleCheckbox = (event) => {
-    if (event.target.style.Textdecoration) {
-      //div.target.style.removeProperty("text-decoration");
-    } else {
-      //div.target.style.setProperty("text-decoration", "line-through");
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(inputArea);
-    const someObject = {
-      todo: inputArea,
-      checkDone: false,
-    };
-    setList((todo) => [...todo, someObject]);
-  };
+  /* const temp = list.map((todo) => (
+    <div className="liElement">
+      <input type="checkbox" onClick={handleCheckbox} />
+      <li
+        //onClick={((liElement.style.display = "none"), editArea)}
+        className="liElement"
+      >
+        {todo.todo}
+      </li>
+      <button>Delete</button>
+    </div>
+  )); */
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          //type="text"
-          //id="inputArea"
-          className="inputArea"
-          value={inputArea}
-          onChange={(e) => setTodo(e.target.value)}
-          //onKeyDown={keyPressHandler}
-          placeholder="What would you like to do?"
-        />
-        <button className="addButton" onClick={clickPressHandler}>
-          Add
-        </button>
-      </form>
-      <hr></hr>
-      <div>
+    <div className="todo-container">
+      <ul className="todo-list">
         {list.map((todo) => (
-          <div className="liElement">
-            <input type="checkbox" onClick={handleCheckbox} />
-            <li
-              //onClick={((liElement.style.display = "none"), editArea)}
-              className="liElement"
-            >
-              {todo.todo}
-            </li>
-            <button>Delete</button>
-          </div>
+          <Todo todo={todo} setList={setList} list={list} />
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
