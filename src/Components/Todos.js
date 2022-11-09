@@ -55,6 +55,14 @@ export default function Todos() {
     );
   }
 
+  const handleCheckbox = (event) => {
+    if (event.target.style.Textdecoration) {
+      //div.target.style.removeProperty("text-decoration");
+    } else {
+      //div.target.style.setProperty("text-decoration", "line-through");
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputArea);
@@ -71,6 +79,7 @@ export default function Todos() {
         <input
           //type="text"
           //id="inputArea"
+          className="inputArea"
           value={inputArea}
           onChange={(e) => setTodo(e.target.value)}
           //onKeyDown={keyPressHandler}
@@ -83,8 +92,8 @@ export default function Todos() {
       <hr></hr>
       <div>
         {list.map((todo) => (
-          <div>
-            <input type="checkbox" />
+          <div className="liElement">
+            <input type="checkbox" onClick={handleCheckbox} />
             <li
               //onClick={((liElement.style.display = "none"), editArea)}
               className="liElement"

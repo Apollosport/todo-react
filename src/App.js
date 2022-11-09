@@ -1,14 +1,19 @@
 import React from "react";
 import "./App.css";
 import Todos from "./Components/Todos";
+import TodoInput from "./Components/TodoInput";
 import Footer from "./Components/Footer";
 
 function App() {
   return (
     <div className="App">
-      <h1>ToDo or !ToDo</h1>
-      <Todos />
-      <ul></ul>
+      <div className="FormInputDiv">
+        <h1>ToDo || !ToDo</h1>
+        <TodoInput />
+      </div>
+      <div className="TodosDiv">
+        <Todos />
+      </div>
     </div>
   );
 }
