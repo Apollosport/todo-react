@@ -1,9 +1,6 @@
 import React from "react";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
-import { NavItem } from "react-bootstrap";
-
-library.add(faCheckSquare, faCoffee);
+import { BsTrashFill } from "react-icons/bs";
+import { BsTrash } from "react-icons/bs";
 
 const Todo = ({ todo, list, setList }) => {
   const deleteHandler = () => {
@@ -28,8 +25,9 @@ const Todo = ({ todo, list, setList }) => {
     <div className="todo">
       <input type="checkbox" onChange={doneHandler}></input>
       <li className={`todo-item ${todo.done ? "done" : ""}`}>{todo.text}</li>
+
       <button className="delete" onClick={deleteHandler}>
-        Delete
+        <BsTrashFill /> <BsTrash />
       </button>
     </div>
   );
