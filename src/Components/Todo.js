@@ -1,14 +1,45 @@
 import React from "react";
 import { BsTrashFill } from "react-icons/bs";
 import { BsTrash } from "react-icons/bs";
+import { useState } from "react";
 
 
-const Handleediting = () => {
-  
 
-}
 
 const Todo = ({ listItem, list, setList }) => {
+  const [edit, setEdit] = useState('');
+
+  const inputHandler = (e) => {
+    setEdit(e.target.value);
+  };
+
+  const enterHandler = (e) => { 
+    if (e.code === "Enter"){
+      handleEditing();
+    }
+  }
+
+  const handleEditing = () => { 
+    console.log(' edit = ', edit);   
+      if (edit === "") {
+        alert("Nothing to do? Maybe do Something from the list!W");
+        return;
+      }      
+      //setList([...list, { text: edit}]);
+      setList(list.map((element) => {
+        if (element.id === listItem.id) {           
+      return {
+        ...element,
+        text: edit,
+      };       
+    };
+    return element;
+  }))
+  console.log(list);
+  }
+
+  
+
   const deleteHandler = () => {
     setList(list.filter((element) => element.id !== listItem.id));
   };
@@ -35,10 +66,11 @@ const Todo = ({ listItem, list, setList }) => {
       <li className={`todo-item ${listItem.done ? "done" : ""}`}>
         {listItem.text}
       </li>
+     <input className='todo-edit' type="text" value={edit} onKeyPress={enterHandler} onChange={inputHandler}></input>     
       <button className="delete" onClick={deleteHandler}>
         <BsTrashFill /> <BsTrash />
       </button>
-      <button className="edit" onClick={deleteHandler}>
+      <button className="edit" onClick={handleEditing}>
         Edit
       </button>
       
@@ -47,3 +79,6 @@ const Todo = ({ listItem, list, setList }) => {
 };
 
 export default Todo;
+
+//${listItem.edit ? "done" : ""}
+//(e) => setEdit(e.target.value)
