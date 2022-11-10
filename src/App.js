@@ -3,13 +3,36 @@ import "./App.css";
 import Todos from "./Components/Todos";
 import TodoInput from "./Components/TodoInput";
 import Footer from "./Components/Footer";
-import { useState } from "react";
-import uuid from "react-uuid";
+import { useState, useEffect } from "react";
 
 function App() {
   const [inputText, setInputText] = useState("");
-  //const [input2, setTodo2] = useState(inputArea);
-  const [list, setList] = useState([{}]);
+  const [list, setList] = useState([]);
+
+  const saveLocalList = () => {
+    localStorage.setItem("list", JSON.stringify(list));
+  };
+
+  const getLocalList = () => {
+    if (localStorage.getItem("list") === null) {
+      localStorage.setItem("list", JSON.stringify([]));
+    } else {
+      let listLocal = JSON.parse(localStorage.getItem("list"));
+      console.log("listlocal ", listLocal);
+      setList(listLocal);
+      /* listLocal.forEach((element) => {
+        setList(element);
+      }); */
+    }
+  };
+
+  useEffect(() => {
+    getLocalList();
+  }, []);
+
+  useEffect(() => {
+    saveLocalList();
+  }, [list]);
 
   return (
     <div className="App">
