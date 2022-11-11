@@ -10,12 +10,14 @@ export default function TodosInput({ inputText, setInputText, list, setList }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(e);
     if (inputText === "") {
       alert("Nothing to do? Maybe do Something from the list!W");
       return;
     }
-    setList([...list, { text: inputText, done: false, id: uuid() }]);
+    setList([
+      ...list,
+      { text: inputText, done: false, edit: false, id: uuid() },
+    ]);
     setInputText("");
   };
 

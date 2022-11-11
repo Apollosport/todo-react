@@ -47,6 +47,7 @@ function App() {
       <div className="TodosDiv">
         <Todos list={list} setList={setList} />
       </div>
+      <Footer />
     </div>
   );
 }

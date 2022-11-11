@@ -41,3 +41,19 @@ li {
 ul {
   list-style-type: none;
 }
+
+.invisible {
+  display: none;
+}
+
+.visible {
+  display: "";
+}
+
+.footer {
+  font-size: 0.5em;
+}
+
+.img {
+  height: 100px;
+}
