@@ -16,19 +16,20 @@ const Todo = ({ listItem, list, setList }) => {
       alert("Nothing to do? Maybe do Something from the list!");
       return;
     }
+    console.log("list before ", list);
     setList(
       list.map((element) => {
         if (element.id === listItem.id) {
           return {
             ...element,
             text: edit,
+            edit: !element.edit,
           };
         }
         return element;
       })
     );
-    console.log(list);
-    toggleEdit();
+    console.log("listafter ", list);
   };
 
   const deleteHandler = () => {
