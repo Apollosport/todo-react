@@ -84,7 +84,7 @@ const Todo = ({ listItem, list, setList }) => {
         ></input>
       </form>
       <button className="delete" onClick={deleteHandler}>
-        <BsTrashFill /> <BsTrash />
+        <BsTrashFill /> {/* <BsTrash /> */}
       </button>
     </div>
   );
