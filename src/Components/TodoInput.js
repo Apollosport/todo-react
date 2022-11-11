@@ -22,17 +22,19 @@ export default function TodosInput({ inputText, setInputText, list, setList }) {
   };
 
   return (
-    <form>
+    <form className="form-input">
       <h1>ToDo || !ToDo</h1>
-      <input
-        className="inputArea"
-        value={inputText}
-        onChange={inputHandler}
-        placeholder="What would you like to do?"
-      />
-      <button className="addButton" onClick={submitHandler}>
-        <AiFillPlusCircle /> <CgAdd />
-      </button>
+      <div>
+        <input
+          className="inputArea"
+          value={inputText}
+          onChange={inputHandler}
+          placeholder="What would you like to do?"
+        />
+        <button className="addButton" onClick={submitHandler}>
+          <AiFillPlusCircle /> {/* <CgAdd /> */}
+        </button>
+      </div>
     </form>
   );
 }

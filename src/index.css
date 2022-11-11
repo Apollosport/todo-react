@@ -12,6 +12,11 @@ li {
 .FormInputDiv {
   background-color: lightgray;
   border-radius: 5em;
+  height: 90px;
+}
+
+.h1Input {
+  height: 15510px;
 }
 
 .TodosDiv {
@@ -25,13 +30,18 @@ li {
   border-style: groove;
 }
 
-hr {
-  width: 70%;
+.todo {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .done {
   text-decoration: line-through;
-  color: #c2c2c2;
+  color: #999999;
 }
 
 li {
@@ -56,4 +66,13 @@ ul {
 
 .img {
   height: 100px;
+}
+
+.todo-item {
+  min-width: 200px;
+}
+
+.form-input,
+.footer {
+  padding-left: 40px;
 }
