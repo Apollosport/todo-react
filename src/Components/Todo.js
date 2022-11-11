@@ -10,14 +10,8 @@ const Todo = ({ listItem, list, setList }) => {
     setEdit(e.target.value);
   };
 
-  const enterHandler = (e) => {
-    if (e.code === "Enter" || e.code === "NumpadEnter") {
-      handleEditing();
-    }
-  };
-
-  const handleEditing = () => {
-    console.log(" edit = ", edit);
+  const handleEditing = (e) => {
+    e.preventDefault();
     if (edit === "") {
       alert("Nothing to do? Maybe do Something from the list!");
       return;
@@ -80,14 +74,14 @@ const Todo = ({ listItem, list, setList }) => {
       >
         {listItem.text}
       </li>
-      <input
-        className={`todo-edit ${listItem.edit ? "visible" : "invisible"}`}
-        type="text"
-        value={edit}
-        placeholder={listItem.text}
-        onKeyPress={enterHandler}
-        onChange={inputHandler}
-      ></input>
+      <form onSubmit={handleEditing}>
+        <input
+          className={`todo-edit ${listItem.edit ? "visible" : "invisible"}`}
+          type="text"
+          placeholder={listItem.text}
+          onChange={inputHandler}
+        ></input>
+      </form>
       <button className="delete" onClick={deleteHandler}>
         <BsTrashFill /> <BsTrash />
       </button>
@@ -96,6 +90,3 @@ const Todo = ({ listItem, list, setList }) => {
 };
 
 export default Todo;
-
-//${listItem.edit ? "done" : ""}
-//(e) => setEdit(e.target.value)
