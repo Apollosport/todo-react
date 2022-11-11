@@ -11,7 +11,7 @@ export default function TodosInput({ inputText, setInputText, list, setList }) {
   const submitHandler = (e) => {
     e.preventDefault();
     if (inputText === "") {
-      alert("Nothing to do? Maybe do Something from the list!W");
+      alert("Nothing to do? Maybe do Something from the list!");
       return;
     }
     setList([
